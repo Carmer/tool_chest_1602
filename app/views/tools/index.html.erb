@@ -1,0 +1,7 @@
+<h1>All Tools</h1>
+
+<ul class="tool_info">
+  <% @tools.each do |tool| %>
+  <li><%= tool.name %> - $<%= tool.price %> - only <%= tool.quantity %> left!</li>
+  <% end %>
+</ul>

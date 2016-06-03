@@ -1,7 +1,38 @@
 class ToolsController < ApplicationController
 
+  def new
+    @tool = Tool.new
+  end
+
+  def show
+    @tool = Tool.find(params[:id])
+  end
+
+  def edit
+    @tool = Tool.find(params[:id])
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+    if @tool.update_attributes( tool_params )
+      redirect_to @tool
+    else
+      render :edit
+    end
+  end
+
   def index
     @tools = Tool.all
+  end
+
+  def create
+    @tool = Tool.new( tool_params )
+
+    if @tool.save
+      redirect_to tool_path(@tool)
+    else
+      render :new
+    end
   end
 
   def show
@@ -9,27 +40,13 @@ class ToolsController < ApplicationController
   end
 
   def destroy
-    tool = Tool.find( params[:id] )
-    tool.destroy
+    Tool.find(params[:id]).destroy
     redirect_to tools_path
-  end
-
-  def new
-    @tool = Tool.new
-  end
-
-  def create
-    tool = Tool.new( tool_params )
-    if tool.save
-      redirect_to tool_path(tool.id)
-    else
-      render :new
-    end
   end
 
   private
 
   def tool_params
-    params.require(:tool).permit(:name, :price, :quantity)
+    params.require(:tool).permit(:name, :quantity, :price)
   end
 end
