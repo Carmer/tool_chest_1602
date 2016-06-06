@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def most_recent_tool
-    @most_recent_tool ||= Tool.where(user_id: session[:most_recent_tool_id]).last if session[:most_recent_tool_id]
+    @most_recent_tool ||= Tool.where(user_id: current_user.id).last if current_user
   end
 
   def current_user

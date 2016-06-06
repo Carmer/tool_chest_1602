@@ -26,9 +26,10 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @tool = Tool.new( tool_params )
+    @tool = current_user.tools.new( tool_params )
 
     if @tool.save
+      session[:most_recent_tool_id] = @tool.id
       flash[:notice] = "Tool: #{@tool.name} has been created!"
       redirect_to tool_path(@tool)
     else
