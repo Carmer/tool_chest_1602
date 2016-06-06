@@ -1,6 +1,7 @@
 class ToolsController < ApplicationController
 
   def new
+    @categories = Category.all
     @tool = Tool.new
   end
 
@@ -9,6 +10,7 @@ class ToolsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @tool = Tool.find(params[:id])
   end
 
