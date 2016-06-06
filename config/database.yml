@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: tool_chest_1602_development
+  database: tool_chest_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tool_chest_1602_test
+  database: tool_chest_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: tool_chest_1602_production
+  database: tool_chest_production
   username: tool_chest_1602
   password: <%= ENV['TOOL_CHEST_1602_DATABASE_PASSWORD'] %>
