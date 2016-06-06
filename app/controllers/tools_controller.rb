@@ -29,6 +29,7 @@ class ToolsController < ApplicationController
     @tool = Tool.new( tool_params )
 
     if @tool.save
+      flash[:notice] = "Tool: #{@tool.name} has been created!"
       redirect_to tool_path(@tool)
     else
       render :new
