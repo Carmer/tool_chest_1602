@@ -42,6 +42,7 @@ group :development, :test do
   gem 'launchy'
   gem "nyan-cat-formatter"
   gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
   # Access an IRB console on exception pages or by using <%= console %> in views
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
